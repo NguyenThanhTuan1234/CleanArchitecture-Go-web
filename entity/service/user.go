@@ -1,5 +1,7 @@
 package service
 
+import "net/http"
+
 type UserService interface {
-	CreateUser() error
+	CreateUserPage(http.ResponseWriter, *http.Request) error
 }
