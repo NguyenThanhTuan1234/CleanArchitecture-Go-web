@@ -1,1 +1,1 @@
-Golangでウェブアプリを開発する。
+Clean Architectureに基づいてGolangでウェブアプリを開発する。
