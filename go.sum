@@ -1,2 +1,4 @@
+github.com/GoesToEleven/golang-web-dev v0.0.0-20191213230751-ef2d6fb2fe25 h1:PXb5wpGn+awL+vsW96ZoS2r9ybuXPHcradpjQpupYME=
+github.com/GoesToEleven/golang-web-dev v0.0.0-20191213230751-ef2d6fb2fe25/go.mod h1:kCzgRnGeAg0uoJRAJeogJJE1TBmBI0Vd1sSYJW00br0=
 github.com/lib/pq v1.8.0 h1:9xohqzkUwzR4Ga4ivdTcawVS89YSDVxXMa3xJX3cGzg=
 github.com/lib/pq v1.8.0/go.mod h1:AlVN5x4E4T544tWzH6hKfbfQvm3HdbOxrmggDNAPY9o=

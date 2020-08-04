@@ -1,21 +1,12 @@
 package main
 
 import (
-	"CleanArchitecture-Go-web/adapter/gateway"
-	"CleanArchitecture-Go-web/config"
-	"CleanArchitecture-Go-web/usecase"
+	"CleanArchitecture-Go-web/driver"
+	"net/http"
 )
 
 func main() {
-	// conf := config.GetConfig()
-	x, err := gateway.NewRDBClient(config.GetConfig().GetPostgres())
-	if err != nil {
-		panic(err)
-	}
-	repo := gateway.NewPostgresRepository(x)
-	use := usecase.NewUserUsecase(repo)
-	err1 := use.CreateUser()
-	if err1 != nil {
-		panic(err)
-	}
+	http.Handle("/resources/", http.StripPrefix("/resources/", http.FileServer(http.Dir("resources/"))))
+	http.HandleFunc("/", driver.Index)
+	http.ListenAndServe(":8080", nil)
 }
