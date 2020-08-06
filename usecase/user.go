@@ -10,11 +10,13 @@ type UserUsecase interface {
 }
 
 type userUsecase struct {
-	postgresRepo repository.PostgresRepository
+	handlerRepo repository.HandlerRepository
 }
 
-func NewUserUsecase(postgresRepo repository.PostgresRepository) UserUsecase {
+func NewUserUsecase(
+	handlerRepo repository.HandlerRepository,
+) UserUsecase {
 	return &userUsecase{
-		postgresRepo: postgresRepo,
+		handlerRepo: handlerRepo,
 	}
 }

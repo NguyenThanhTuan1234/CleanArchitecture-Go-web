@@ -8,5 +8,8 @@ import (
 func main() {
 	http.Handle("/resources/", http.StripPrefix("/resources/", http.FileServer(http.Dir("resources/"))))
 	http.HandleFunc("/", driver.Index)
+	http.HandleFunc("/user", driver.User)
+	http.HandleFunc("/login", driver.Login)
+	http.HandleFunc("/signup", driver.Signup)
 	http.ListenAndServe(":8080", nil)
 }
