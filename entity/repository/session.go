@@ -2,6 +2,7 @@ package repository
 
 import (
 	"CleanArchitecture-Go-web/entity"
+	"mime/multipart"
 	"net/http"
 )
 
@@ -10,4 +11,6 @@ type SessionRepository interface {
 	CheckSessionIfExist(http.ResponseWriter, *http.Request, string) bool
 	DeleteSession(http.ResponseWriter, *http.Request, string) error
 	GetSessionInfo(http.ResponseWriter, *http.Request) (*entity.Session, error)
+	AppendValue(http.ResponseWriter, *http.Cookie, string) *http.Cookie
+	UploadImage(multipart.File, *multipart.FileHeader) (string, error)
 }
