@@ -22,12 +22,12 @@ func (u *userUsecase) CreateUserPage(w http.ResponseWriter, r *http.Request) err
 		xs = strings.Split(c.Value, "|")
 	}
 	if xs == nil {
-		err2 := u.handlerRepo.User(w, r, nil)
+		err2 := u.handlerRepo.User(w, r, "")
 		if err2 != nil {
 			return err2
 		}
 	} else {
-		err2 := u.handlerRepo.User(w, r, xs[1:])
+		err2 := u.handlerRepo.User(w, r, xs[len(xs)-1])
 		if err2 != nil {
 			return err2
 		}

@@ -86,7 +86,7 @@
                 <div class="row">
                     <div class="col-md-5">
                         <div class="person_img">
-                            {{range .}}
+                            {{if .}}
                             <img src="/resources/pics/{{.}}" width="400px"> {{end}}
                             <!-- <img src="../resources/user/img/member/member-1.png" alt=""> -->
                             <form method="post" enctype="multipart/form-data">
