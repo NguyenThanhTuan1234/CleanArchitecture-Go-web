@@ -13,7 +13,7 @@ func (u *userUsecase) CreateUserPage(w http.ResponseWriter, r *http.Request) err
 		if err != nil {
 			return err
 		}
-		fname, err1 := u.sessionRepo.UploadImage(mf, fh)
+		fname, err1 := u.fileRepo.UploadImage(mf, fh)
 		if err1 != nil {
 			return err1
 		}

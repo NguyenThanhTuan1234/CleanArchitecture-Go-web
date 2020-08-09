@@ -10,7 +10,7 @@ import (
 	"strings"
 )
 
-func (r *sessionRepository) UploadImage(mf multipart.File, fh *multipart.FileHeader) (string, error) {
+func (r *fileRepository) UploadImage(mf multipart.File, fh *multipart.FileHeader) (string, error) {
 	// defer mf.Close()
 	// Create sha for file name
 	fmt.Println(fh.Filename)
