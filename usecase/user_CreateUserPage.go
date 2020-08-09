@@ -22,7 +22,7 @@ func (u *userUsecase) CreateUserPage(w http.ResponseWriter, r *http.Request) err
 		xs = strings.Split(c.Value, "|")
 	}
 	if xs == nil {
-		err2 := u.handlerRepo.User(w, r, "")
+		err2 := u.handlerRepo.User(w, r, "2ee4d15b6e7b6898dcda631a426ccc2234f28cc1.JPG")
 		if err2 != nil {
 			return err2
 		}
