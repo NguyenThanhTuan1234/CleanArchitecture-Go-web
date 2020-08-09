@@ -11,9 +11,10 @@ func User(w http.ResponseWriter, r *http.Request) {
 	file := &controller.FileControllerPreset{
 		Value: "nf",
 	}
+	cookieRepo := gateway.NewCookieRepository()
 	sessionRepo := gateway.NewSessionClient()
 	handlerRepo := gateway.NewTemplateRepository()
-	use := usecase.NewUserUsecase(file, sessionRepo, handlerRepo)
+	use := usecase.NewUserUsecase(file, cookieRepo, sessionRepo, handlerRepo)
 	err := use.CreateUserPage(w, r)
 	if err != nil {
 		panic(err)

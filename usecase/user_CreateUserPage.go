@@ -1,14 +1,13 @@
 package usecase
 
 import (
-	"CleanArchitecture-Go-web/adapter/gateway/client"
 	"net/http"
 	"strings"
 )
 
 func (u *userUsecase) CreateUserPage(w http.ResponseWriter, r *http.Request) error {
 	var xs []string
-	c := client.GetCookie(w, r)
+	c := u.cookieRepo.GetCookie(w, r)
 	if r.Method == http.MethodPost {
 		mf, fh, err := u.fileIn.GetFile(w, r)
 		if err != nil {
@@ -18,7 +17,7 @@ func (u *userUsecase) CreateUserPage(w http.ResponseWriter, r *http.Request) err
 		if err1 != nil {
 			return err1
 		}
-		c = u.sessionRepo.AppendValue(w, c, fname)
+		c = u.cookieRepo.AppendValue(w, c, fname)
 		xs = strings.Split(c.Value, "|")
 	}
 	if xs == nil {

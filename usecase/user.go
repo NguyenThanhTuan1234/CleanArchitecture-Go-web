@@ -11,17 +11,20 @@ type UserUsecase interface {
 
 type userUsecase struct {
 	fileIn      FileInput
+	cookieRepo  repository.CookieRepository
 	sessionRepo repository.SessionRepository
 	handlerRepo repository.HandlerRepository
 }
 
 func NewUserUsecase(
 	fileIn FileInput,
+	cookieRepo repository.CookieRepository,
 	sessionRepo repository.SessionRepository,
 	handlerRepo repository.HandlerRepository,
 ) UserUsecase {
 	return &userUsecase{
 		fileIn:      fileIn,
+		cookieRepo:  cookieRepo,
 		sessionRepo: sessionRepo,
 		handlerRepo: handlerRepo,
 	}
