@@ -7,7 +7,9 @@ import (
 
 func (u *userUsecase) CreateUserPage(w http.ResponseWriter, r *http.Request) error {
 	var xs []string
-	c := u.cookieRepo.GetCookie(w, r)
+	var filename string
+	var err3 error
+	var c = u.cookieRepo.GetCookie(w, r)
 	if r.Method == http.MethodPost {
 		mf, fh, err := u.fileIn.GetFile(w, r)
 		if err != nil {
@@ -17,16 +19,22 @@ func (u *userUsecase) CreateUserPage(w http.ResponseWriter, r *http.Request) err
 		if err1 != nil {
 			return err1
 		}
-		c = u.cookieRepo.AppendValue(w, c, fname)
 		xs = strings.Split(c.Value, "|")
+		session, err := u.sessionRepo.GetSessionInfo(w, r)
+		c = u.cookieRepo.AppendValue(w, c, fname, session.Id)
+		xs = strings.Split(c.Value, "|")
+		filename, err3 = u.fileRepo.MapUidToImage(session.Id, xs[len(xs)-1])
+		if err3 != nil {
+			return err3
+		}
 	}
-	if xs == nil {
+	if len(xs) < 2 {
 		err2 := u.handlerRepo.User(w, r, "2ee4d15b6e7b6898dcda631a426ccc2234f28cc1.JPG")
 		if err2 != nil {
 			return err2
 		}
 	} else {
-		err2 := u.handlerRepo.User(w, r, xs[len(xs)-1])
+		err2 := u.handlerRepo.User(w, r, filename)
 		if err2 != nil {
 			return err2
 		}
