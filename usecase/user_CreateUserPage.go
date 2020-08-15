@@ -33,8 +33,12 @@ func (u *userUsecase) CreateUserPage(w http.ResponseWriter, r *http.Request) err
 	if err3 != nil {
 		return err3
 	}
+	defaultImg, err := u.paramIn.ReadParam()
+	if err != nil {
+		return err
+	}
 	if len(xs) < 2 {
-		err2 := u.handlerRepo.User(w, r, "2ee4d15b6e7b6898dcda631a426ccc2234f28cc1.JPG")
+		err2 := u.handlerRepo.User(w, r, defaultImg)
 		if err2 != nil {
 			return err2
 		}
