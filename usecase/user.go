@@ -10,12 +10,13 @@ type UserUsecase interface {
 }
 
 type userUsecase struct {
-	fileIn      FileInput
-	paramIn     ParamInput
-	fileRepo    repository.FileRepository
-	cookieRepo  repository.CookieRepository
-	sessionRepo repository.SessionRepository
-	handlerRepo repository.HandlerRepository
+	fileIn       FileInput
+	paramIn      ParamInput
+	fileRepo     repository.FileRepository
+	cookieRepo   repository.CookieRepository
+	sessionRepo  repository.SessionRepository
+	postgresRepo repository.PostgresRepository
+	handlerRepo  repository.HandlerRepository
 }
 
 func NewUserUsecase(
@@ -24,14 +25,16 @@ func NewUserUsecase(
 	fileRepo repository.FileRepository,
 	cookieRepo repository.CookieRepository,
 	sessionRepo repository.SessionRepository,
+	postgresRepo repository.PostgresRepository,
 	handlerRepo repository.HandlerRepository,
 ) UserUsecase {
 	return &userUsecase{
-		fileIn:      fileIn,
-		paramIn:     paramIn,
-		fileRepo:    fileRepo,
-		cookieRepo:  cookieRepo,
-		sessionRepo: sessionRepo,
-		handlerRepo: handlerRepo,
+		fileIn:       fileIn,
+		paramIn:      paramIn,
+		fileRepo:     fileRepo,
+		cookieRepo:   cookieRepo,
+		sessionRepo:  sessionRepo,
+		postgresRepo: postgresRepo,
+		handlerRepo:  handlerRepo,
 	}
 }
