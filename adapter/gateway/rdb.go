@@ -2,7 +2,6 @@ package gateway
 
 import (
 	"database/sql"
-	"fmt"
 
 	_ "github.com/lib/pq"
 )
@@ -31,7 +30,7 @@ func NewRDBClient(config PostgresConfig) (*rdbClient, error) {
 	if err != nil {
 		return nil, err
 	}
-	fmt.Println("You connected to your database")
+	// fmt.Println("You connected to your database")
 	return &rdbClient{
 		db: db,
 	}, nil

@@ -86,7 +86,13 @@
                 <div class="row">
                     <div class="col-md-5">
                         <div class="person_img">
-                            <img src="../resources/user/img/member/member-1.png" alt="">
+                            {{if .}}
+                            <img src="/resources/pics/{{.}}" width="400px"> {{end}}
+                            <!-- <img src="../resources/user/img/member/member-1.png" alt=""> -->
+                            <form method="post" enctype="multipart/form-data">
+                                <input type="file" name="nf">
+                                <input type="submit">
+                            </form>
                             <a class="download_btn" href="#"><span>Download Resume</span></a>
                         </div>
                     </div>
