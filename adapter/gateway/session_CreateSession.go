@@ -28,6 +28,5 @@ func (c *sessionRepository) CreateSession(w http.ResponseWriter, r *http.Request
 	}
 	http.SetCookie(w, cookie)
 	dbSessions[cookie.Value] = &entity.Session{id, time.Now()}
-	fmt.Println(dbSessions[cookie.Value].Id)
 	return nil
 }

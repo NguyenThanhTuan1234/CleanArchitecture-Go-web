@@ -12,7 +12,7 @@ func (u *loginUsecase) CreateLoginPage(w http.ResponseWriter, r *http.Request) e
 		return err
 	}
 	if u.sessionRepo.CheckSessionIfExist(w, r, sessionname) == true {
-		http.Redirect(w, r, "/", http.StatusSeeOther)
+		http.Redirect(w, r, "/user", http.StatusSeeOther)
 		return nil
 	}
 	var user *entity.User
