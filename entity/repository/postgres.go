@@ -8,4 +8,5 @@ type PostgresRepository interface {
 	CreateUser(string, string, string, string, string) error
 	GetImage(int) (*entity.Image, error)
 	SaveImage(string, int) error
+	UpdateImage(string, int) error
 }

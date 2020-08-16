@@ -1,7 +1,6 @@
 package usecase
 
 import (
-	"fmt"
 	"net/http"
 	"strings"
 )
@@ -27,21 +26,22 @@ func (u *userUsecase) CreateUserPage(w http.ResponseWriter, r *http.Request) err
 		if err3 != nil {
 			return err3
 		}
-		err4 := u.postgresRepo.SaveImage(filename, session.Id)
-		if err != nil {
-			return err4
+		img, err := u.postgresRepo.GetImage(session.Id)
+		if img.Name == "" {
+			err4 := u.postgresRepo.SaveImage(filename, session.Id)
+			if err != nil {
+				return err4
+			}
+		} else {
+			err5 := u.postgresRepo.UpdateImage(filename, session.Id)
+			if err5 != nil {
+				return err5
+			}
 		}
 	}
 	xs = strings.Split(c.Value, "|")
-	fmt.Println(xs)
 	session, _ := u.sessionRepo.GetSessionInfo(w, r)
-	// filename, err3 = u.fileRepo.MapUidToImage(session.Id, xs[len(xs)-1])
-	// if err3 != nil {
-	// 	return err3
-	// }
 	img, err := u.postgresRepo.GetImage(session.Id)
-	fmt.Println(img)
-	fmt.Println(session.Id)
 	if err != nil {
 		return err
 	}
